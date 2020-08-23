@@ -47,6 +47,8 @@ def main():
             not_whatsapp.write(number + "\n")
             not_sended_count += 1
 
+        print(f"Current: {number}, Sended: {sended_count}, Not WhatsApp: {not_sended_count}, All: {sended_count + not_sended_count + error_numbers_count}")
+
     numbers.close()
     sended.close()
     not_whatsapp.close()
