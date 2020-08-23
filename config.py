@@ -1,3 +1,3 @@
-message = ''
-message_for_image = ''
-file_path = 'absolute path to file'
+message = 'Добрый день!\nКомпания Агометра ростёт и развивается, а вместе с ней ростёт и ассортимент!'
+message_for_image = 'Супер футболка с нашим логотипом! Ограниченный тираж! Спешите!'
+file_path = '/Users/kamask/Yandex.Disk.localized/Super S/для сайта/2020-07-08 15-20-37.JPG'
