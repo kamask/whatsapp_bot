@@ -16,15 +16,17 @@ def main():
     wait(driver, 1000).until(EC.presence_of_element_located((By.ID, 'side')))
 
     numbers = open("numbers.txt", "r")
-    sended = open("sended.txt", "w")
-    not_whatsapp = open("not_whatsapp.txt", "w")
-    error_numbers = open("error_numbers.txt", "w")
+    # number_list = numbers.readlines()
+    number_list = range(79252393125, 79252394000)
+    numbers.close()
 
     sended_count = 0
     not_sended_count = 0
     error_numbers_count = 0
 
-    for number in numbers.readlines():
+    for number in number_list:
+
+        number = str(number)
 
         if number[-1] == '\n':
             number = number[:-1]
@@ -36,23 +38,25 @@ def main():
             number = '7' + number[1:]
 
         if number[0] != '7' or len(number) != 11:
-            error_numbers.write(number + "\n")
+            with open("error_numbers.txt", "a") as file:
+                file.write(number + "\n")
+
             error_numbers_count += 1
             continue
 
         if send(number):
-            sended.write(number + "\n")
+            with open("sended.txt", "a") as file:
+                file.write(number + "\n")
+
             sended_count += 1
         else:
-            not_whatsapp.write(number + "\n")
+            with open("not_whatsapp.txt", "a") as file:
+                file.write(number + "\n")
+
             not_sended_count += 1
 
         print(f"Current: {number}, Sended: {sended_count}, Not WhatsApp: {not_sended_count}, All: {sended_count + not_sended_count + error_numbers_count}")
 
-    numbers.close()
-    sended.close()
-    not_whatsapp.close()
-    error_numbers.close()
     driver.quit()
 
     with open("sended.txt", "r") as file:
